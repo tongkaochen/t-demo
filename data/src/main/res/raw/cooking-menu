@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root name="cooking_menu">
+    <menulist>
+        <menu id="01">
+            <name>青椒炒蛋</name>
+            <date>20190101</date>
+            <count>0</count>
+            <pricelist>
+                <price id="20190101">10</price>
+            </pricelist>
+            <materiallist>
+                <material id="01">
+                    <name>青椒</name>
+                    <price>3</price>
+                    <usage type="weight">500</usage>
+                    <comment>微辣</comment>
+                </material>
+                <material id="02">
+                    <name>鸡蛋</name>
+                    <price>3</price>
+                    <usage type="num">4</usage>
+                    <comment></comment>
+                </material>
+            </materiallist>
+        </menu>
+
+        <menu id="02">
+            <name>腐竹炒肉</name>
+            <date>20190102</date>
+            <count>1</count>
+            <pricelist>
+                <price>18</price>
+            </pricelist>
+            <materiallist>
+                <material id="01">
+                    <name>腐竹</name>
+                    <price>5</price>
+                    <usage type="weight">250</usage>
+                    <comment></comment>
+                </material>
+                <material id="02">
+                    <name>瘦肉</name>
+                    <price>6</price>
+                    <usage type="weight">250</usage>
+                    <comment></comment>
+                </material>
+            </materiallist>
+        </menu>
+    </menulist>
+</root>
