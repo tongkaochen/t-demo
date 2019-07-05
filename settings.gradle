@@ -1,1 +1,1 @@
-include ':app', ':pattern', ':image_processor', ':algorithm', ':framework', ':os_framework', ':view_practice', ':system_design', ':data', ':opengl'
+include ':app', ':pattern', ':image_processor', ':algorithm', ':framework', ':open_source', ':view_practice', ':system_design', ':data', ':opengl'
