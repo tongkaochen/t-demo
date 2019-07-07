@@ -29,7 +29,7 @@
             <date>20190102</date>
             <count>1</count>
             <pricelist>
-                <price>18</price>
+                <price id="20190102">18</price>
             </pricelist>
             <materiallist>
                 <material id="01">

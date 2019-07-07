@@ -42,9 +42,22 @@ public class SaxStrategy implements ParserStrategy {
 
     @Override
     public MenuBean parse(InputStream is) {
-        if (mParser == null) {
+        logd("parse start");
+        if (mParser == null || is == null) {
             return null;
         }
+//        try {
+//            int length = 0;
+//            char[] data = new char[1024];
+//            int d = 0;
+//            while ((d=is.read()) != -1) {
+//                data[length++] = (char)d;
+//            }
+//            System.out.println(new String(data));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
         try {
             mParser.parse(is, mHandler);
         } catch (IOException e) {
@@ -52,28 +65,39 @@ public class SaxStrategy implements ParserStrategy {
         } catch (SAXException e) {
             e.printStackTrace();
         }
+        logd("parse end");
         return null;
     }
     class XmlContentHandler extends DefaultHandler {
         @Override
         public void startDocument() throws SAXException {
             super.startDocument();
+            logd("startDocument");
         }
 
         @Override
         public void endDocument() throws SAXException {
             super.endDocument();
+            logd("endDocument");
         }
 
         @Override
         public void startElement(String uri, String localName,
                                  String qName, Attributes attributes) throws SAXException {
             super.startElement(uri, localName, qName, attributes);
+            logd("startElement uri:" + uri + " localName: " + localName +
+                    " qName:" + qName + " attributes:" + attributes.getValue(qName));
         }
 
         @Override
         public void characters(char[] ch, int start, int length) throws SAXException {
             super.characters(ch, start, length);
+            logd("characters ch:" + new String(ch, start, length) + " start: " + start +
+                    " length:" + length);
         }
+    }
+    private void logd(String msg) {
+        //LogUtil.logd(this, msg);
+        System.out.println("SaxStrategy: " + msg);
     }
 }

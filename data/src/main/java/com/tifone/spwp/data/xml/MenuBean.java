@@ -14,13 +14,19 @@ import java.util.Objects;
 public class MenuBean {
     public String id;
     public int date;
+    public String name;
+    public int count;
     private List<Price> prices;
     private List<Material> materials;
 
-    public MenuBean(String id, int date) {
+    public MenuBean(String id) {
         prices = new ArrayList<>();
         materials = new ArrayList<>();
         this.id = id;
+
+    }
+    public MenuBean(String id, int date) {
+        this(id);
         this.date = date;
     }
 
@@ -34,8 +40,8 @@ public class MenuBean {
         }
         if (findId != -1) {
             prices.remove(findId);
-            prices.add(price);
         }
+        prices.add(price);
         Collections.sort(prices, new Comparator<Price>() {
             @Override
             public int compare(Price o1, Price o2) {
@@ -44,8 +50,15 @@ public class MenuBean {
         });
     }
 
+    public Price createPrice(int id, int price) {
+        return new Price(id, price);
+    }
+    public Material createMaterial(int id, String name, int price,
+                                    String comment, String usageType, int usageValue) {
+        return new Material(id,name, price, comment, usageType, usageValue);
+    }
 
-    private void addMaterial(Material material) {
+    public void addMaterial(Material material) {
         int findId = -1;
         for (Material item : materials) {
             if (item.id == material.id) {
@@ -55,8 +68,8 @@ public class MenuBean {
         }
         if (findId != -1) {
             materials.remove(findId);
-            materials.add(material);
         }
+        materials.add(material);
         Collections.sort(materials, new Comparator<Material>() {
             @Override
             public int compare(Material o1, Material o2) {
@@ -82,9 +95,65 @@ public class MenuBean {
         int price;
         Usage usage;
         String comment;
+        Material(int id, String name, int price, String comment, String usageType, int usageValue) {
+            this.id = id;
+            this.name = name;
+            this.price = price;
+            usage = new Usage(usageType, usageValue);
+            this.comment = comment;
+        }
     }
     class Usage {
         String type;
         int value;
+        Usage(String type, int value) {
+            this.type = type;
+            this.value = value;
+        }
+    }
+
+    @Override
+    public String toString() {
+
+        StringBuilder builder = new StringBuilder();
+        builder.append("Menu:[\n")
+                .append("\tid:")
+                .append(id)
+                .append("\n\t name:")
+                .append(name)
+                .append("\n\t date:")
+                .append(date)
+                .append("\n\t count:")
+                .append(count);
+        builder.append("\n\t [prices: ");
+        for (Price price : prices) {
+            builder.append("\n\t\t date:")
+                    .append(price.date)
+                    .append("\n\t\t value:")
+                    .append(price.value)
+                    .append("]\n");
+        }
+        if (prices.size() == 0) {
+            builder.append("]");
+        }
+        builder.append("\n\t [materials: ");
+        for (Material material : materials) {
+            builder.append("\n\t\t id:")
+                    .append(material.id)
+                    .append("\n\t\t name:")
+                    .append(material.name)
+                    .append("\n\t\t price:")
+                    .append(material.price)
+                    .append("\n\t\t [usage type:")
+                    .append(material.usage.type)
+                    .append("\n\t\t\t value:")
+                    .append(material.usage.value)
+                    .append("]")
+                    .append("\n\t\t comment:")
+                    .append(material.comment)
+                    .append("]\n");
+        }
+        builder.append("]");
+        return builder.toString();
     }
 }
