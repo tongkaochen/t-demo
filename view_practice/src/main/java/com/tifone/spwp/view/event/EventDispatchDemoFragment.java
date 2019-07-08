@@ -9,14 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tifone.spwp.view.BaseFragment;
+import com.tifone.spwp.common.tab.MyTabActivity;
 import com.tifone.spwp.view.R;
 
-public class EventDispatchDemoFragment extends BaseFragment {
+public class EventDispatchDemoFragment extends Fragment {
 
     public static Fragment create(String title) {
         Bundle bundle = new Bundle();
-        bundle.putString(KEY_FRAGMENT_TITLE, title);
+        bundle.putString(MyTabActivity.KEY_FRAGMENT_TITLE, title);
         Fragment fragment = new EventDispatchDemoFragment();
         fragment.setArguments(bundle);
         return fragment;
