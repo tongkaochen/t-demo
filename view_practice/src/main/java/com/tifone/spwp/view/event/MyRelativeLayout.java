@@ -22,18 +22,28 @@ public class MyRelativeLayout extends RelativeLayout {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         logd("dispatchTouchEvent:" + ev.getAction());
+
         return super.dispatchTouchEvent(ev);
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         logd("onInterceptTouchEvent:" + ev.getAction());
+        switch (ev.getAction()) {
+            case  MotionEvent.ACTION_DOWN:
+//                return true;
+        }
+//        return false;
         return super.onInterceptTouchEvent(ev);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         logd("onTouchEvent:" + event.getAction());
+        switch (event.getAction()) {
+            case  MotionEvent.ACTION_DOWN:
+                return true;
+        }
         return super.onTouchEvent(event);
     }
     private void logd(String msg) {

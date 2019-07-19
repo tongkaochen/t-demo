@@ -29,6 +29,6 @@ public class EventDispatchDemoActivity extends Activity {
     }
 
     private void logd(String msg) {
-        Log.d("tifone", this.getLocalClassName() + ": " + msg);
+        Log.d("tifone", getClass().getSimpleName() + ": " + msg);
     }
 }
