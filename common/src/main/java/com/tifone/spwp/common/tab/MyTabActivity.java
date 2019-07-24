@@ -62,7 +62,10 @@ public abstract class MyTabActivity extends AppCompatActivity implements TabHost
             mTabHost.addTab(spec);
             index++;
         }
-        mTabHost.setCurrentTab(0);
+        mTabHost.setCurrentTab(defaultTab());
+    }
+    protected int defaultTab() {
+        return 0;
     }
     protected void setTabDrawable(Drawable drawable) {
         mDrawable = drawable;

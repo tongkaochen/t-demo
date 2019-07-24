@@ -9,7 +9,6 @@ import android.view.MotionEvent;
 import com.tifone.spwp.view.R;
 
 public class EventDispatchDemoActivity extends Activity {
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

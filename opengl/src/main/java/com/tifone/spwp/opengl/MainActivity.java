@@ -1,13 +1,21 @@
 package com.tifone.spwp.opengl;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.tifone.spwp.common.tab.MyTabActivity;
+import com.tifone.spwp.opengl.base.GLBaseDemoFragment;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends MyTabActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public List<Fragment> getFragments() {
+        List<Fragment> result = new ArrayList<>();
+        result.add(GLBaseDemoFragment.create("Base demo"));
+        return result;
     }
 }

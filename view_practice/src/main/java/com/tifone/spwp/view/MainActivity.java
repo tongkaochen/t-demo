@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 
 import com.tifone.spwp.common.tab.MyTabActivity;
+import com.tifone.spwp.view.custom.CustomViewFragment;
 import com.tifone.spwp.view.event.EventDispatchDemoFragment;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class MainActivity extends MyTabActivity {
     public List<Fragment> getFragments() {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(EventDispatchDemoFragment.create("TouchEvent demo"));
+        fragments.add(CustomViewFragment.create("CustomView demo"));
         return fragments;
     }
 

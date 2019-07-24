@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MyActivityAnimation" >
+        <item name="android:activityOpenEnterAnimation">@anim/act_open_enter_anim</item>
+        <item name="android:activityOpenExitAnimation">@anim/act_open_exit_anim</item>
+    </style>
+</resources>

@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.tifone.spwp.common.tab.MyTabActivity;
 import com.tifone.spwp.osframework.okhttp.OkHttpDemoFragment;
+import com.tifone.spwp.osframework.rxjava.RxJavaDemoFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,12 @@ public class MainActivity extends MyTabActivity {
     public List<Fragment> getFragments() {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(OkHttpDemoFragment.create("OkHttp demo"));
+        fragments.add(RxJavaDemoFragment.create("RxJava demo"));
         return fragments;
     }
 
+    @Override
+    protected int defaultTab() {
+        return 1;
+    }
 }

@@ -16,6 +16,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity android:name=".view.event.EventDispatchDemoActivity" />
+        <activity android:name=".algorithm.MainActivity" />
+        <activity android:name=".data.MainActivity" />
+        <activity android:name=".framework.MainActivity" />
+        <activity android:name=".osframework.MainActivity" />
+        <activity android:name=".image.MainActivity" />
+        <activity android:name=".system.MainActivity" />
+        <activity android:name=".view.MainActivity" />
+        <activity android:name=".pattern.MainActivity" />
+        <activity android:name=".opengl.MainActivity" />
     </application>
 
 </manifest>

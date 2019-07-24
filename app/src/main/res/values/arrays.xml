@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="demo_title_entries">
+        <item>Data</item>
+        <item>Frameworks</item>
+        <item>Image</item>
+        <item>Open source</item>
+        <item>OpenGL</item>
+        <item>System design</item>
+        <item>View practice</item>
+        <item>Pattern design</item>
+        <item>Algorithm</item>
+    </string-array>
+    
+    <string-array name="demo_activity_entries">
+        <!--data-->
+        <item>com.tifone.spwp.data.MainActivity</item>
+        <!--frameworks-->
+        <item>com.tifone.spwp.framework.MainActivity</item>
+        <!--image-->
+        <item>com.tifone.spwp.image.MainActivity</item>
+        <!--open source-->
+        <item>com.tifone.spwp.osframework.MainActivity</item>
+        <!--opengl-->
+        <item>com.tifone.spwp.opengl.MainActivity</item>
+        <!--system design-->
+        <item>com.tifone.spwp.system.MainActivity</item>
+        <!--view practice-->
+        <item>com.tifone.spwp.view.MainActivity</item>
+        <!--design pattern-->
+        <item>com.tifone.spwp.pattern.MainActivity</item>
+        <!--algorithm-->
+        <item>com.tifone.spwp.algorithm.MainActivity</item>
+    </string-array>
+
+</resources>
