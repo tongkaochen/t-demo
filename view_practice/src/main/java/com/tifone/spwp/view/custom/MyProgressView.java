@@ -10,6 +10,7 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Shader;
+import android.opengl.GLSurfaceView;
 import android.support.annotation.Nullable;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.util.AttributeSet;
@@ -108,7 +109,6 @@ public class MyProgressView extends View {
 
         int angle = (int) (progress / 100f * 360);
         canvas.drawArc(10, 10, getWidth()-10, getHeight()-10, 0, angle, false, mArcPaint);
-
         canvas.restoreToCount(count);
     }
 }
