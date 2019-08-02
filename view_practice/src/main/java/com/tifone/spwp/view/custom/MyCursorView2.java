@@ -24,12 +24,14 @@ public class MyCursorView2 extends View{
     private int mVisibleCount = 25;
     private GestureDetector mGestureDetector;
     // center cursor position
-    private int mCenterLocation;
-    private int mCenterIndex = 30;
-    private int mTotalLength;
-    private int mItemInterval;
-    private int mDx;
-    private int mTotalDx;
+    private float mCenterLocation;
+    private float mCenterIndex = 10f;
+    private float mTotalLength;
+    private float mItemInterval;
+    private float mDx;
+    private float mTotalDx;
+    private float mScrollX;
+    private Paint mTextPaint;
 
     public MyCursorView2(Context context) {
         this(context, null);
@@ -54,13 +56,18 @@ public class MyCursorView2 extends View{
         mMainScalePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mMainScalePaint.setStyle(Paint.Style.STROKE);
         mMainScalePaint.setStrokeWidth(8f);
-        mMainScalePaint.setColor(Color.YELLOW);
+        mMainScalePaint.setColor(Color.BLACK);
 
         // sub scale paint
         mSubScalePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mCursorPaint.setStyle(Paint.Style.STROKE);
         mCursorPaint.setStrokeWidth(4f);
         mCursorPaint.setColor(Color.GREEN);
+
+        // text paint
+        mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mTextPaint.setTextSize(16);
+        mTextPaint.setColor(Color.BLACK);
 
         mGestureDetector = new GestureDetector(getContext(), mGestureListener);
     }
@@ -76,10 +83,9 @@ public class MyCursorView2 extends View{
             };
 
     private void scrollViewTo(float dx) {
-        mCenterLocation -= dx;
-        mCenterLocation = resolveCenterLocation(mCenterLocation);
-        logd("mCenterLocation = " + mCenterLocation);
-        mDx = (int) dx;
+//        mScrollX -= dx;
+        logd("mScrollX = " + mScrollX);
+        mCenterLocation += dx;
         invalidate();
     }
     @Override
@@ -89,15 +95,25 @@ public class MyCursorView2 extends View{
         mWidth = MeasureSpec.getSize(widthMeasureSpec);
         mHeight = MeasureSpec.getSize(heightMeasureSpec);
         mCenterX = mWidth / 2;
-        mCenterLocation = mCenterX;
-        mItemInterval = mWidth / mVisibleCount;
+        mItemInterval = (float)mWidth / mVisibleCount;
         mTotalLength = (mMaxScale - mMinScale) * mItemInterval;
+        mCenterLocation = getCenterLocation(mCenterIndex);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         getParent().requestDisallowInterceptTouchEvent(true);
         mGestureDetector.onTouchEvent(event);
+        switch(event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                mCenterLocation = getCenterLocation(mCenterIndex);
+                logd("mCenterLocation = " + mCenterLocation);
+                mScrollX = 0;
+                break;
+            case MotionEvent.ACTION_UP:
+                mCenterLocation = resolveCenterLocation(mCenterLocation + mScrollX);
+                logd("mCenterLocation = " + mCenterLocation);
+        }
         return true;
     }
 
@@ -105,68 +121,78 @@ public class MyCursorView2 extends View{
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         // draw the center cursor indicator
+        float newLocation = resolveCenterLocation(mCenterLocation);
+        logd("newLocation = " + newLocation);
+        mCenterIndex = getIndex(newLocation);
         drawCursorIndicator(canvas);
-        getDiffX();
-        mCenterIndex = getIndex(mCenterLocation);
         // draw left side
-        drawLeftSide(canvas);
+        drawLeftSide(canvas, newLocation);
         // draw right side
-        drawRightSide(canvas);
+        drawRightSide(canvas, newLocation);
     }
 
     private void drawCursorIndicator(Canvas canvas) {
         // indicator must place in the center of view
         // it may be the bitmap indicator
         canvas.drawLine(mCenterX, 0, mCenterX, mHeight, mCursorPaint);
+        canvas.drawLine(0, mHeight / 2.0f, mWidth, mHeight / 2.0f, mCursorPaint);
     }
-    private void drawLeftSide(Canvas canvas) {
+    private void drawLeftSide(Canvas canvas, float newLocation) {
         // specify the visible count
         // main scale and sub scale
-        int visibleCount = mVisibleCount / 2;
-        int positionX = mCenterX - mTotalDx;
+        float leftWidth = mWidth / 2.0f + mScrollX;
         int positionTop = mHeight / 4;
         int positionBottom = positionTop + mHeight / 2;
-        int currentLocation = mCenterLocation;
-        for (int i = positionX; i > 0; i -= mItemInterval) {
-            currentLocation -= mItemInterval;
-            if (getIndex(currentLocation) % 10 == 0) {
-                canvas.drawLine(i, positionTop, i, positionBottom, mMainScalePaint);
-            } else {
-                // draw stub scale
-                canvas.drawLine(i, positionTop, i, positionBottom, mSubScalePaint);
-            }
+        for(float offset = 0f; offset <= leftWidth; offset += mItemInterval) {
+            float xV = newLocation - offset;
+            xV = resolveCenterLocation(xV);
+            int index = Math.round(getIndex(xV));
+            logd("xV = " + xV + " index = " + index);
+            drawScale(canvas, index, leftWidth - offset, positionTop,
+                    leftWidth - offset, positionBottom);
         }
     }
-    private int getIndex(int position) {
-        logd("index = " + (int) (((float)position / mTotalLength) * (mMaxScale - mMinScale) + mMinScale));
-        return (int) (((float)position / mTotalLength) * (mMaxScale - mMinScale)) + mMinScale;
+    private void drawScale(Canvas canvas, int index, float startX,
+                           float startY, float endX, float endY) {
+        if ( index % 10 == 0) {
+            canvas.drawLine(startX, startY,
+                    endX, endY, mMainScalePaint);
+        } else {
+            // draw stub scale
+            canvas.drawLine(startX, startY,
+                    endX, endY, mSubScalePaint);
+        }
+        canvas.drawText("" + index, endX,
+                endY, mTextPaint);
     }
-    private void drawRightSide(Canvas canvas) {
+    private float getIndex(float location) {
+        return location / mItemInterval + mMinScale;
+    }
+    private float getCenterLocation(float index) {
+        return mItemInterval * (index - mMinScale);
+    }
+    // centerLocation, centerIndex
+    // scroll, dx value
+    // draw start with centerLocation + dx,
+    // draw left(length = width/2 + dx) and right(width/2 - dx)
+    // up event
+    // the new centerLocation, centerIndex
+    private void drawRightSide(Canvas canvas, float newLocation) {
         // specify the visible count
         // main scale and sub scale
-        int visibleCount = mVisibleCount / 2;
-        int positionX = mCenterX - mTotalDx;
+        float rightWidth = mWidth / 2.0f - mScrollX;
         int positionTop = mHeight / 4;
         int positionBottom = positionTop + mHeight / 2;
-        int currentLocation = mCenterLocation;
-        for (int i = positionX; i < mWidth; i += mItemInterval) {
-            currentLocation += mItemInterval;
-            if (getIndex(currentLocation) % 10 == 0) {
-                canvas.drawLine(i, positionTop, i, positionBottom, mMainScalePaint);
-            } else {
-                // draw stub scale
-                canvas.drawLine(i, positionTop, i, positionBottom, mSubScalePaint);
-            }
+        for(float offset = 0f; offset <= rightWidth; offset += mItemInterval) {
+            float xV = newLocation + offset;
+            xV = resolveCenterLocation(xV);
+            int index = Math.round(getIndex(xV));
+            float xP =  mWidth / 2.0f + mScrollX + offset;
+            drawScale(canvas, index, rightWidth + offset, positionTop,
+                    rightWidth + offset, positionBottom);
         }
     }
-    private int getDiffX() {
-        mTotalDx += mDx;
-        if (Math.abs(mTotalDx) > mItemInterval) {
-            mTotalDx = Math.abs(mTotalDx) % mItemInterval;
-        }
-        return mTotalDx;
-    }
-    private int resolveCenterLocation(int currentLocation) {
+    private float resolveCenterLocation(float currentLocation) {
         // between 0 ~ mTotalLength
         if (currentLocation < 0) {
             return mTotalLength + currentLocation;
