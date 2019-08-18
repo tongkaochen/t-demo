@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <integer-array name="demo_entries">
+        <!--data-->
+        <item>0</item>
+        <!--frameworks-->
+        <item>1</item>
+        <!--image-->
+        <item>2</item>
+        <!--open source-->
+        <item>3</item>
+        <!--opengl-->
+        <item>4</item>
+        <!--system design-->
+        <item>5</item>
+        <!--view practice-->
+        <item>6</item>
+        <!--design pattern-->
+        <item>7</item>
+        <!--algorithm-->
+        <item>8</item>
+        <!-- database -->
+        <item>9</item>
+    </integer-array>
     <string-array name="demo_title_entries">
         <item>Data</item>
         <item>Frameworks</item>
@@ -11,6 +33,7 @@
         <item>View practice</item>
         <item>Pattern design</item>
         <item>Algorithm</item>
+        <item>Database</item>
     </string-array>
     
     <string-array name="demo_activity_entries">
@@ -32,6 +55,8 @@
         <item>com.tifone.spwp.pattern.MainActivity</item>
         <!--algorithm-->
         <item>com.tifone.spwp.algorithm.MainActivity</item>
+        <!-- database -->
+        <item>com.tifone.spwp.database.MainActivity</item>
     </string-array>
 
 </resources>

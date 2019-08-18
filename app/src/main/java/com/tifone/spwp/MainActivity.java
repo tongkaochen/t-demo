@@ -17,7 +17,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
-    private List<DemoBean> mDataset;
+    private List<DemoBean> mDataSet;
     private DemoAdapter mAdapter;
     private int mFocusPosition = 0;
 
@@ -36,11 +36,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void readDemoFromArray() {
-        mDataset = new ArrayList<>();
+        mDataSet = new ArrayList<>();
+        int[] entries = getResources().getIntArray(R.array.demo_entries);
         String[] titles = getResources().getStringArray(R.array.demo_title_entries);
         String[] activities = getResources().getStringArray(R.array.demo_activity_entries);
-        for (int i = 0; i < titles.length; i++) {
-            mDataset.add(new DemoBean(titles[i], activities[i]));
+        for (int i = 0; i < entries.length; i++) {
+            String title = titles[entries[i]];
+            String activity = activities[entries[i]];
+            mDataSet.add(new DemoBean(title, activity));
         }
     }
 
@@ -72,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(
                 @NonNull DemoViewHolder demoViewHolder, int position) {
-            String title = mDataset.get(position).title;
-            final String activity = mDataset.get(position).activity;
+            String title = mDataSet.get(position).title;
+            final String activity = mDataSet.get(position).activity;
             demoViewHolder.btn.setText(position + ": " + title);
             demoViewHolder.btn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -94,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return mDataset.size();
+            return mDataSet.size();
         }
     }
 
