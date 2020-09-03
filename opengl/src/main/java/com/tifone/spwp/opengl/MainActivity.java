@@ -18,4 +18,9 @@ public class MainActivity extends MyTabActivity {
         result.add(GLBaseDemoFragment.create("Base demo"));
         return result;
     }
+
+    @Override
+    protected String getActionBarTitle() {
+        return "OpenGLES";
+    }
 }

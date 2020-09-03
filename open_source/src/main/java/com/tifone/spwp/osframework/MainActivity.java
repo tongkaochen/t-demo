@@ -22,6 +22,11 @@ public class MainActivity extends MyTabActivity {
     }
 
     @Override
+    protected String getActionBarTitle() {
+        return "开源框架";
+    }
+
+    @Override
     protected int defaultTab() {
         return 1;
     }

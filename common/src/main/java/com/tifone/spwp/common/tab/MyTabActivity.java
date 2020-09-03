@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TabHost;
 
+import com.tifone.spwp.common.DemoBaseActivity;
 import com.tifone.spwp.common.R;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import java.util.Map;
 /**
  * 通用的demo列表管理器
  */
-public abstract class MyTabActivity extends AppCompatActivity implements TabHost.OnTabChangeListener {
+public abstract class MyTabActivity extends DemoBaseActivity implements TabHost.OnTabChangeListener {
 
     public static final String KEY_FRAGMENT_TITLE = "key_fragment_title";
 
@@ -42,6 +43,7 @@ public abstract class MyTabActivity extends AppCompatActivity implements TabHost
         initViewPager();
         initTabHost();
     }
+
     protected void setFragments(List<Fragment> fragments) {
         mFragments = fragments;
         initTabHost();

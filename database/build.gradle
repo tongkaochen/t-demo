@@ -43,4 +43,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation "androidx.room:room-runtime:2.2.0-alpha02"
     annotationProcessor "androidx.room:room-compiler:2.2.0-alpha02"
+
+    implementation project(path: ':common')
 }

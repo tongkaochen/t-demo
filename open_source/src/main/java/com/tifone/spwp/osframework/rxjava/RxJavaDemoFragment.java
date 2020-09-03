@@ -23,13 +23,18 @@ public class RxJavaDemoFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        RxJavaDemo demo = new RxJavaDemo();
-        demo.demo1();
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        RxJavaDemo demo = new RxJavaDemo();
+        demo.demo1();
     }
 }

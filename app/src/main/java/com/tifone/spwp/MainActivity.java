@@ -14,6 +14,8 @@ import android.widget.Button;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.tifone.spwp.common.tab.log.LogUtil.logd;
+
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             String title = titles[entries[i]];
             String activity = activities[entries[i]];
             mDataSet.add(new DemoBean(title, activity));
+            logd("title: " + title + ", activity: " + activity);
         }
     }
 
