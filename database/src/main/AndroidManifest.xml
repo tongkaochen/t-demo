@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tifone.spwp.database" >
+    package="com.tifone.demo.database" >
     <application
-        android:name=".DatabaseApplication">
+        android:name="com.tifone.demo.database.DatabaseApplication">
     </application>
 </manifest>

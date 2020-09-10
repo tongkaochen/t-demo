@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.tifone.spwp.view.custom.MyCursorView2
+    <com.tifone.demo.view.custom.MyCursorView2
         android:id="@+id/cursor_view"
         android:layout_width="match_parent"
         android:layout_height="300dp"/>
 
-    <com.tifone.spwp.view.custom.MyProgressView
+    <com.tifone.demo.view.custom.MyProgressView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_below="@id/cursor_view"/>

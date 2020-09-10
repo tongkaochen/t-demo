@@ -1,31 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <integer-array name="demo_entries">
-        <!--data-->
-        <item>0</item>
-        <!--frameworks-->
-        <item>1</item>
-        <!--image-->
-        <item>2</item>
-        <!--open source-->
-        <item>3</item>
-        <!--opengl-->
-        <item>4</item>
-        <!--system design-->
-        <item>5</item>
-        <!--view practice-->
-        <item>6</item>
-        <!--design pattern-->
-        <item>7</item>
-        <!--algorithm-->
-        <item>8</item>
-        <!-- database -->
-        <item>9</item>
-    </integer-array>
     <string-array name="demo_title_entries">
         <item>Data</item>
-        <item>Frameworks</item>
+        <item>Structure</item>
         <item>Image</item>
         <item>Open source</item>
         <item>OpenGL</item>
@@ -34,29 +12,32 @@
         <item>Pattern design</item>
         <item>Algorithm</item>
         <item>Database</item>
+        <item>Android</item>
     </string-array>
     
     <string-array name="demo_activity_entries">
         <!--data-->
-        <item>com.tifone.spwp.data.MainActivity</item>
+        <item>com.tifone.demo.data.MainActivity</item>
         <!--frameworks-->
-        <item>com.tifone.spwp.framework.MainActivity</item>
+        <item>com.tifone.demo.structure.MainActivity</item>
         <!--image-->
-        <item>com.tifone.spwp.image.MainActivity</item>
+        <item>com.tifone.demo.image.MainActivity</item>
         <!--open source-->
-        <item>com.tifone.spwp.osframework.MainActivity</item>
+        <item>com.tifone.demo.osource.MainActivity</item>
         <!--opengl-->
-        <item>com.tifone.spwp.opengl.MainActivity</item>
+        <item>com.tifone.demo.opengl.MainActivity</item>
         <!--system design-->
-        <item>com.tifone.spwp.system.MainActivity</item>
+        <item>com.tifone.demo.system.MainActivity</item>
         <!--view practice-->
-        <item>com.tifone.spwp.view.MainActivity</item>
+        <item>com.tifone.demo.view.MainActivity</item>
         <!--design pattern-->
-        <item>com.tifone.spwp.pattern.MainActivity</item>
+        <item>com.tifone.demo.pattern.MainActivity</item>
         <!--algorithm-->
-        <item>com.tifone.spwp.algorithm.MainActivity</item>
+        <item>com.tifone.demo.algorithm.MainActivity</item>
         <!-- database -->
-        <item>com.tifone.spwp.database.MainActivity</item>
+        <item>com.tifone.demo.database.MainActivity</item>
+        <!-- android-->
+        <item>com.tifone.demo.android.AndroidDemoActivity</item>
     </string-array>
 
 </resources>

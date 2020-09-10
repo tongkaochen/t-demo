@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">t-spwp</string>
+    <string name="app_name">t-demo</string>
+    <string name="data_title">Data</string>
+    <string name="framework_title">Frameworks</string>
+    <string name="image_title">Image</string>
+    <string name="open_source_title">Open source</string>
+    <string name="opengl_title">OpenGL</string>
+    <string name="system_title">System design</string>
+    <string name="view_title">View practice</string>
+    <string name="pattern_title">Pattern design</string>
+    <string name="algorithm_title">Algorithm</string>
+    <string name="database_title">Database</string>
+    <string name="android_title">Android</string>
 </resources>

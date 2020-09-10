@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tifone.demo.android" >
+    <application>
+        <service android:name=".aidl.BookService" />
+    </application>
+</manifest>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tifone.spwp">
+    package="com.tifone.demo">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.tifone.demo.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,17 +17,18 @@
             </intent-filter>
         </activity>
         
-        <activity android:name=".view.event.EventDispatchDemoActivity" />
-        <activity android:name=".algorithm.MainActivity" />
-        <activity android:name=".data.MainActivity" />
-        <activity android:name=".framework.MainActivity" />
-        <activity android:name=".osframework.MainActivity" />
-        <activity android:name=".image.MainActivity" />
-        <activity android:name=".system.MainActivity" />
-        <activity android:name=".view.MainActivity" />
-        <activity android:name=".pattern.MainActivity" />
-        <activity android:name=".opengl.MainActivity" />
-        <activity android:name=".database.MainActivity" />
+        <activity android:name="com.tifone.demo.view.event.EventDispatchDemoActivity" />
+        <activity android:name="com.tifone.demo.algorithm.MainActivity" />
+        <activity android:name="com.tifone.demo.data.MainActivity" />
+        <activity android:name="com.tifone.demo.structure.MainActivity" />
+        <activity android:name="com.tifone.demo.osource.MainActivity" />
+        <activity android:name="com.tifone.demo.image.MainActivity" />
+        <activity android:name="com.tifone.demo.system.MainActivity" />
+        <activity android:name="com.tifone.demo.view.MainActivity" />
+        <activity android:name="com.tifone.demo.pattern.MainActivity" />
+        <activity android:name="com.tifone.demo.opengl.MainActivity" />
+        <activity android:name="com.tifone.demo.database.MainActivity" />
+        <activity android:name=".android.AndroidDemoActivity" />
     </application>
 
 </manifest>
